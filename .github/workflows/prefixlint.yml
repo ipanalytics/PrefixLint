@@ -1,0 +1,21 @@
+name: PrefixLint
+
+on:
+  pull_request:
+    paths:
+      - "**/*.txt"
+      - "**/*.cidr"
+      - "**/*.netset"
+
+jobs:
+  prefixlint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          list: examples/deny.txt
+          allow: examples/allow.txt
+          fail-on: warning
