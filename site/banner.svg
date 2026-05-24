@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="360" viewBox="0 0 1400 360" role="img" aria-labelledby="title desc">
+  <title id="title">PrefixLint</title>
+  <desc id="desc">A technical banner showing CIDR prefixes flowing through lint rules into normalized infrastructure artifacts.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#172033"/>
+    </linearGradient>
+    <style>
+      .title { fill: #f8fafc; font: 700 58px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 0; }
+      .sub { fill: #cbd5e1; font: 400 22px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 0; }
+      .label { fill: #e2e8f0; font: 600 20px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 0; }
+      .small { fill: #94a3b8; font: 400 16px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 0; }
+      .box { fill: #111827; stroke: #334155; stroke-width: 2; rx: 8; }
+      .ok { fill: #14b8a6; }
+      .warn { fill: #f59e0b; }
+      .err { fill: #ef4444; }
+      .line { stroke: #64748b; stroke-width: 3; fill: none; }
+      .dash { stroke: #38bdf8; stroke-width: 2; stroke-dasharray: 6 8; fill: none; opacity: .75; }
+    </style>
+  </defs>
+  <rect width="1400" height="360" fill="url(#bg)"/>
+  <path class="dash" d="M76 272 C260 210 342 322 518 244 C694 166 822 229 1002 156 C1112 112 1216 112 1328 144"/>
+  <text x="72" y="104" class="title">PrefixLint</text>
+  <text x="76" y="143" class="sub">CI linting and coverage-preserving normalization for IP prefix lists</text>
+  <g transform="translate(76 190)">
+    <rect class="box" width="300" height="96"/>
+    <circle cx="28" cy="30" r="6" class="warn"/>
+    <text x="48" y="36" class="label">192.0.2.0/24</text>
+    <circle cx="28" cy="62" r="6" class="err"/>
+    <text x="48" y="68" class="small">192.0.2.1 duplicate coverage</text>
+  </g>
+  <path class="line" d="M400 238 H508"/>
+  <g transform="translate(532 190)">
+    <rect class="box" width="300" height="96"/>
+    <circle cx="28" cy="30" r="6" class="ok"/>
+    <text x="48" y="36" class="label">lint rules</text>
+    <text x="48" y="68" class="small">duplicate · covered · conflict</text>
+  </g>
+  <path class="line" d="M856 238 H964"/>
+  <g transform="translate(988 190)">
+    <rect class="box" width="336" height="96"/>
+    <circle cx="28" cy="30" r="6" class="ok"/>
+    <text x="48" y="36" class="label">5000 → 1870 rules</text>
+    <text x="48" y="68" class="small">same coverage · SARIF · Markdown</text>
+  </g>
+</svg>

@@ -1,0 +1,52 @@
+name: PrefixLint
+description: Lint and normalize IP blocklists in pull requests.
+author: PrefixLint
+
+inputs:
+  list:
+    description: Path to the deny/block list to lint.
+    required: true
+  allow:
+    description: Optional allow-list path used for conflict checks.
+    required: false
+    default: ""
+  fail-on:
+    description: Minimum severity that fails the workflow: error, warning, info, none.
+    required: false
+    default: warning
+  version:
+    description: PrefixLint version to install.
+    required: false
+    default: latest
+
+runs:
+  using: composite
+  steps:
+    - name: Install PrefixLint
+      shell: bash
+      run: |
+        set -euo pipefail
+        if [ "${{ inputs.version }}" = "latest" ]; then
+          go install github.com/ipanalytics/PrefixLint/cmd/prefixlint@latest
+        else
+          go install github.com/ipanalytics/PrefixLint/cmd/prefixlint@${{ inputs.version }}
+        fi
+
+    - name: Run PrefixLint
+      shell: bash
+      run: |
+        set -euo pipefail
+        args=(check --format markdown --markdown-out "$RUNNER_TEMP/prefixlint.md" --fail-on "${{ inputs.fail-on }}")
+        if [ -n "${{ inputs.allow }}" ]; then
+          args+=(--allow "${{ inputs.allow }}")
+        fi
+        args+=("${{ inputs.list }}")
+        prefixlint "${args[@]}"
+
+    - name: Add job summary
+      if: always()
+      shell: bash
+      run: |
+        if [ -f "$RUNNER_TEMP/prefixlint.md" ]; then
+          cat "$RUNNER_TEMP/prefixlint.md" >> "$GITHUB_STEP_SUMMARY"
+        fi
