@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "malformed": "error",
+    "duplicate": "warning",
+    "covered": "warning",
+    "allow-deny-conflict": "error",
+    "private-in-public-blocklist": "info"
+  }
+}
