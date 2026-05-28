@@ -3,7 +3,7 @@
 PrefixLint is a CI-oriented linter and normalizer for IP prefix lists. It validates deny-lists, allow-lists, ipset inputs, nftables feeds, and CIDR datasets for duplicate rules, redundant coverage, malformed entries, allow/deny conflicts, and normalization impact.
 
 <p align="center">
-  <img src="./site/banner.svg" alt="PrefixLint banner" width="100%">
+  <img src="./site/banner.png" alt="PrefixLint banner" width="100%">
 </p>
 
 <p align="center">
